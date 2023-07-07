@@ -7,8 +7,8 @@ const app = express();
 const env = require("dotenv");
 
 // routes
-const defaultroutes = require("./routes/index");
-const adminRoutes = require("./routes/admin/auth")
+// const defaultroutes = require("./routes/index");
+// const adminRoutes = require("./routes/admin/auth")
 
 
 // env config
