@@ -6,11 +6,8 @@ const isNull = (value) => {
         value === 'Null' ||
         value === null ||
         value === undefined ||
-        value === 'Please Select' ||
-        value.length === 0 ||
-        value === -1 ||
-        value === 'Please Coverage' ||
-        value === 'Please Relationship'
+        value === -1
+
     ) {
         return true
     } else {
@@ -18,4 +15,4 @@ const isNull = (value) => {
     }
 }
 
-module.exports  = { isNull }
+module.exports = { isNull }
