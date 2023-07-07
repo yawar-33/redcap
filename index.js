@@ -8,7 +8,7 @@ const env = require("dotenv");
 
 // routes
 const defaultroutes = require("./routes/index");
-// const adminRoutes = require("./routes/admin/auth")
+const adminRoutes = require("./routes/admin/auth")
 
 
 // env config
@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
     })
 })
 app.use("/api", defaultroutes)
-// app.use("/api", adminRoutes)
+app.use("/api", adminRoutes)
 
 
 const PORT = process.env.PORT || 5000;
