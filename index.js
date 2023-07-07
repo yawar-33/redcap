@@ -4,7 +4,7 @@ const cors = require("cors");
 // const connectDatabase = require("./config/database")
 
 const app = express();
-// const env = require("dotenv");
+const env = require("dotenv");
 
 // routes 
 // const defaultroutes = require("./routes/index");
@@ -12,7 +12,7 @@ const app = express();
 
 
 // env config
-// env.config();
+env.config();
 
 
 app.use(bodyParser.json())
