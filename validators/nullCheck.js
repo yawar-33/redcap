@@ -18,6 +18,4 @@ const isNull = (value) => {
     }
 }
 
-
-
-module.exports = { isNull }
+module.exports  = { isNull }
