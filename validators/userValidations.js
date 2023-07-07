@@ -1,6 +1,6 @@
 const { isNull } = require("./nullcheck");
 
-exports.isSignupRequestValidated = (req, res, next) => {
+const isSignupRequestValidated = (req, res, next) => {
     const { firstName, lastName, userName, email, password } = req.body;
 
     if (isNull(firstName)) {
@@ -21,7 +21,7 @@ exports.isSignupRequestValidated = (req, res, next) => {
     next();
 }
 
-exports.isSignInRequestValidated = (req, res, next) => {
+const isSignInRequestValidated = (req, res, next) => {
     const { email, password } = req.body;
 
     if (isNull(email)) {
@@ -32,3 +32,5 @@ exports.isSignInRequestValidated = (req, res, next) => {
     }
     next();
 }
+
+module.exports = { isSignInRequestValidated, isSignupRequestValidated }
