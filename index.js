@@ -7,7 +7,7 @@ const app = express();
 const env = require("dotenv");
 
 // routes
-// const defaultroutes = require("./routes/index");
+const defaultroutes = require("./routes/index");
 // const adminRoutes = require("./routes/admin/auth")
 
 
@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
         data: 'Default Route',
     })
 })
-// app.use("/api", defaultroutes)
+app.use("/api", defaultroutes)
 // app.use("/api", adminRoutes)
 
 
