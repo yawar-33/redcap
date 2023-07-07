@@ -6,7 +6,7 @@ const connectDatabase = require("./config/database")
 const app = express();
 const env = require("dotenv");
 
-// routes kkkkkkkkkkkkkk
+// routes
 const defaultroutes = require("./routes/index");
 const adminRoutes = require("./routes/admin/auth")
 
