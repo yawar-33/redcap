@@ -78,21 +78,28 @@ module.exports = {
 
 
     async addToken(req, res) {
-        const { id } = req.user;
-        const { token } = req.body;
         try {
-            const tokenObj = {
-                redcaptoken: token, createdBy: id, userId: id,
-            }
-            const red_cap = await redcap.create(tokenObj)
-            if (red_cap) {
-                res.status(200).send({ red_cap })
+            // Check if the user ID already exists in the collection
+            const existingToken = await redcap.findOne({ userId: id });
+        
+            if (existingToken) {
+              // If the user ID exists, update the token with the new value
+              existingToken.redcaptoken = token;
+              existingToken.updatedAt = Date.now(); // Optionally update the 'updatedAt' field
+              const updatedToken = await existingToken.save();
+              res.status(200).send({ red_cap: updatedToken });
             } else {
-                res.status(400).send({ message: 'Something Went Wrong' })
+              // If the user ID does not exist, create a new entry
+              const tokenObj = {
+                redcaptoken: token,
+                createdBy: id,
+                userId: id,
+              };
+              const red_cap = await redcap.create(tokenObj);
+              res.status(200).send({ red_cap });
             }
-        }
-        catch (error) {
-            res.status(500).send(error)
-        }
+          } catch (error) {
+            res.status(500).send(error);
+          }
     },
 }
