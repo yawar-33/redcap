@@ -78,10 +78,27 @@ module.exports = {
 
 
     async addToken(req, res) {
+        const { id } = req.user;
+        const { token } = req.body;
+        // try {
+        //     const tokenObj = {
+        //         redcaptoken: token, createdBy: id, userId: id,
+        //     }
+        //     const red_cap = await redcap.create(tokenObj)
+        //     if (red_cap) {
+        //         res.status(200).send({ red_cap })
+        //     } else {
+        //         res.status(400).send({ message: 'Something Went Wrong' })
+        //     }
+        // }
+        // catch (error) {
+        //     res.status(500).send(error)
+        // }
+
         try {
             // Check if the user ID already exists in the collection
             const existingToken = await redcap.findOne({ userId: id });
-        
+            console.log(existingToken);
             if (existingToken) {
               // If the user ID exists, update the token with the new value
               existingToken.redcaptoken = token;
@@ -95,10 +112,13 @@ module.exports = {
                 createdBy: id,
                 userId: id,
               };
+              console.log(tokenObj);
               const red_cap = await redcap.create(tokenObj);
+              console.log(tokenObj);
               res.status(200).send({ red_cap });
             }
           } catch (error) {
+            console.log(error);
             res.status(500).send(error);
           }
     },
